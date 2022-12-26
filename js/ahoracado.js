@@ -58,7 +58,7 @@ if (acerto==0) {
 document.getElementById("hombresito").remove();
 const c = document.createElement("img");
 c.setAttribute("id", "hombresito");
-c.setAttribute("src", `/img/${vida}.png`);
+c.setAttribute("src", `./img/${vida}.png`);
 document.body.appendChild(c);
 document.querySelector(".monigote").appendChild(c);
 
