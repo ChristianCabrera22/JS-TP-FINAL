@@ -9,7 +9,7 @@ palabra="MASCOTA"; //Palabra ganadora, por ahora 1 sola.. con array podria poner
 
 
 
-let palabra2="";
+let palabra2=""; //
 let palabraTemporal=""; //concatena las letras ingresadas
 let conGanador=0;
 let faltantes=""; //auxilar1 faltantes ej: _A__S_T_
