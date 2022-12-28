@@ -168,7 +168,7 @@ if (vida==0){
     v.innerHTML= `
     <h4>Lo siento, perdiste La palabra era: ${palabra}</h4>
     <p class="text-white">Puntaje total: ${puntaje}</p>
-    <form class="mt-3" id="formulario">
+    <form class="mt-3" id="formulario" action=#stats>
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Escriba aqui su nombre">
         </div>
@@ -176,6 +176,8 @@ if (vida==0){
     </form>
     `;
     document.getElementById("abc").remove();
+
+
 } else {
     v.innerText = "Vidas: "+(vida+1);
 }
@@ -183,7 +185,9 @@ document.body.appendChild(v);
 document.querySelector(".vidas").appendChild(v);
 
 
-
+function borrar(id){
+    document.getElementById(id).remove();
+}
 
 }
 function agregarLetraPT(letra) {
