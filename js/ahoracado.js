@@ -16,12 +16,13 @@ agregarABC(); //agrega el abcdario por primera vez
 
 
 
-let vida=5; //Cantidad de intentos
+let vida=6; //Cantidad de intentos
 let letrasIngresadas =""; //va concatenando las letras ingresadas
 
 
 pRamdom = ()=> {
-    const arrayPalabras=["AUTO", "CASA", "BICI", "GATO", "SOFA"];
+    //const arrayPalabras=["AUTO", "CASA", "BICI", "GATO", "SOFA"];
+    const arrayPalabras=["CASA","AUTOMOVIL","BICICLETA","SEMAFORO","SILLON","LIVIANO","PESADO","ORDEN"];
     let palabra = arrayPalabras[Math.floor(Math.random() * arrayPalabras.length)];
     return palabra
 }
@@ -80,27 +81,27 @@ if (acerto==0) {
         document.body.appendChild(bbb);
         document.querySelector(".letras").appendChild(bbb);
         const retry=document.getElementById("retry");
-retry.addEventListener("click", () => {
-    document.getElementById("abc").remove(); //borra el mensaje de puntaje y btn retry
-    agregarABC();
-    //realiza reset
-    vida=5; //Cantidad de intentos
-    letrasIngresadas="";
-    palabra=pRamdom();
-    palabra2="";
-    palabraTemporal="";
-    conGanador=0;
-    faltantes="";
-    palabrasAcertadas="";
-    win=false; //ganador o perdedor
-    auxFaltantes=""; //cantidad de ______ para ir mostrando
-    for (let i = 0; i< palabra.length; i++) {
-        auxFaltantes=auxFaltantes+"_";
-    }
-    men();
-    acertadas();
-    vidas();
-});
+        retry.addEventListener("click", () => {
+            document.getElementById("abc").remove(); //borra el mensaje de puntaje y btn retry
+            agregarABC();
+            //realiza reset
+            vida=6; //Cantidad de intentos
+            letrasIngresadas="";
+            palabra=pRamdom();
+            palabra2="";
+            palabraTemporal="";
+            conGanador=0;
+            faltantes="";
+            palabrasAcertadas="";
+            win=false; //ganador o perdedor
+            auxFaltantes=""; //cantidad de ______ para ir mostrando
+            for (let i = 0; i< palabra.length; i++) {
+                auxFaltantes=auxFaltantes+"_";
+            }
+            men();
+            acertadas();
+            vidas();
+        });
         return
     }
 }
@@ -165,21 +166,30 @@ if (vida==0){
     document.getElementById("acertadas").remove();
     document.getElementById("palabras").remove();
     //v.innerText = "Lo siento, perdiste La palabra era: "+palabra;
-    v.innerHTML= `
-    <h4>Lo siento, perdiste La palabra era: ${palabra}</h4>
-    <p class="text-white">Puntaje total: ${puntaje}</p>
-    <form class="mt-3" id="formulario" action=#stats>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Escriba aqui su nombre">
-        </div>
-        <button type="submit" class="btn mt-3 btn-primary">GUARDAR</button>
-    </form>
-    `;
+    if (puntaje>0){
+        v.innerHTML= `
+            <h4>Lo siento, perdiste la palabra era: ${palabra}</h4>
+            <p class="text-white">Puntaje total: ${puntaje}</p>
+            <form class="mt-3" id="formulario" action=#stats>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Escriba aqui su nombre">
+                </div>
+                <button type="submit" class="btn mt-3 btn-primary">GUARDAR</button>
+            </form>
+            `;
+    } else {
+        v.innerHTML= `
+            <h4>Lo siento, perdiste la palabra era: ${palabra}</h4>
+            <p class="text-white">No obtuviste puntos</p>
+            <a class="btn btn-primary" href="index.html">Retry</a>
+            `;
+    }
+    
     document.getElementById("abc").remove();
 
 
 } else {
-    v.innerText = "Vidas: "+(vida+1);
+    v.innerText = "Vidas: "+(vida);
 }
 document.body.appendChild(v);
 document.querySelector(".vidas").appendChild(v);
