@@ -7,7 +7,9 @@ for (let i=0; i<abc.length; i++) {
     const a = document.createElement('a');
     a.setAttribute("href", `#letra"${abc.charAt(i)}"`);
     a.setAttribute("onclick", `pushLetra("${abc.charAt(i)}")`);
-    a.textContent = "  " +abc.charAt(i);
+    a.setAttribute("class","badge bg-primary rounded-pill px-2 mt-1 mx-1");
+    //a.textContent = "" +abc.charAt(i);
+    a.innerHTML=`${abc.charAt(i)}`;
     document.querySelector(".abcdario").appendChild(a);
 }
 }
@@ -22,7 +24,7 @@ let letrasIngresadas =""; //va concatenando las letras ingresadas
 
 pRamdom = ()=> {
     //const arrayPalabras=["AUTO", "CASA", "BICI", "GATO", "SOFA"];
-    const arrayPalabras=["CASA","AUTOMOVIL","BICICLETA","SEMAFORO","SILLON","LIVIANO","PESADO","ORDEN"];
+    const arrayPalabras=["CASA","AUTO","BICICLETA","SEMAFORO","SILLON","LIVIANO","PESADO","ORDEN"];
     let palabra = arrayPalabras[Math.floor(Math.random() * arrayPalabras.length)];
     return palabra
 }
@@ -36,9 +38,6 @@ let faltantes=""; //auxilar1 faltantes ej: _A__S_T_
 let palabrasAcertadas=""; //Muestra aciertos
 let win=false; //ganador o perdedor
 let auxFaltantes=""; //cantidad de ______ para ir mostrando
-
-
-
 
 
 for (let i = 0; i< palabra.length; i++) {
