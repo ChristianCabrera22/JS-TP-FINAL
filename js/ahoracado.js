@@ -15,7 +15,7 @@ for (let i=0; i<abc.length; i++) {
 }
 agregarABC(); //agrega el abcdario por primera vez
 
-
+document.getElementById("formulario").style.display = 'none';
 
 
 let vida=6; //Cantidad de intentos
@@ -170,11 +170,12 @@ const vidas=()=>{
         document.getElementById("palabras").remove();
         document.getElementById("formulario").style.display = 'block';
         //v.innerText = "Lo siento, perdiste La palabra era: "+palabra;
-        if (puntaje>0){
+        if (puntaje>0 && victorias>0){
             v.innerHTML= `
                 <h4>Lo siento, perdiste la palabra era: ${palabra}</h4>
                 <p class="text-white">Puntaje total: ${puntaje}</p>
                 `;
+                document.getElementById("formulario").style.display = 'block';
                 const formulario = document.getElementById("formulario");
                 formulario.addEventListener("submit", (e) => {
                     e.preventDefault();
@@ -182,6 +183,7 @@ const vidas=()=>{
                     document.getElementById("formulario").style.display = 'none';
                     document.getElementById("showStats").style.display = 'block';
                     altaPlayer(document.getElementById("name").value,document.getElementById("mail").value,document.getElementById("edad").value,puntaje);
+                
                 });
 
         } else {
@@ -193,8 +195,6 @@ const vidas=()=>{
         }
 
         document.getElementById("abc").remove();
-
-
     } else {
         v.innerText = "Vidas: "+(vida);
     }
