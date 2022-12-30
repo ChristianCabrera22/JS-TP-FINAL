@@ -23,8 +23,8 @@ let letrasIngresadas =""; //va concatenando las letras ingresadas
 
 
 pRamdom = ()=> {
-    //const arrayPalabras=["AUTO", "CASA", "BICI", "GATO", "SOFA"];
-    const arrayPalabras=["CASA","AUTO","BICICLETA","SEMAFORO","SILLON","LIVIANO","PESADO","ORDEN"];
+    const arrayPalabras=["A"];
+    //const arrayPalabras=["CASA","AUTO","BICICLETA","SEMAFORO","SILLON","LIVIANO","PESADO","ORDEN"];
     let palabra = arrayPalabras[Math.floor(Math.random() * arrayPalabras.length)];
     return palabra
 }
@@ -44,6 +44,11 @@ for (let i = 0; i< palabra.length; i++) {
     auxFaltantes=auxFaltantes+"_";
 }
 function pushLetra(letra) {
+
+    for (let i = 0; i< letrasIngresadas.length; i++) {
+        let caracter = letrasIngresadas.charAt(i);
+        if(caracter == letra) return;
+    }
 
     acerto=CompararLetra(letra); //ver si acerto o no
     agregarLetraPT(letra); // agregar letra acertada
@@ -134,6 +139,7 @@ const men=(muerto)=>{
 
 const ganaste=()=>{
     document.getElementById("vidas").remove();
+    document.getElementById("letrasIngresadas").remove();
     const v = document.createElement("p");
     v.setAttribute("id", "vidas");
     v.innerHTML = "<h3>Ganaste!!</h3>";
@@ -145,7 +151,8 @@ const acertadas=()=>{
     document.getElementById("acertadas").remove();
     const p = document.createElement("p");
     p.setAttribute("id", "acertadas");
-    p.innerText = palabrasAcertadas;
+    p.innerHTML =`<p>${palabrasAcertadas}</p>
+    <p class="mt-2" id="letrasIngresadas">${letrasIngresadas}</p>`; //
     document.body.appendChild(p);
     document.querySelector(".letrasusadas").appendChild(p);
 }
@@ -161,18 +168,22 @@ const vidas=()=>{
         men(true);
         document.getElementById("acertadas").remove();
         document.getElementById("palabras").remove();
+        document.getElementById("formulario").style.display = 'block';
         //v.innerText = "Lo siento, perdiste La palabra era: "+palabra;
         if (puntaje>0){
             v.innerHTML= `
                 <h4>Lo siento, perdiste la palabra era: ${palabra}</h4>
                 <p class="text-white">Puntaje total: ${puntaje}</p>
-                <form class="mt-3" id="formulario" action=#stats>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Escriba aqui su nombre">
-                    </div>
-                    <button type="submit" class="btn mt-3 btn-primary">GUARDAR</button>
-                </form>
                 `;
+                const formulario = document.getElementById("formulario");
+                formulario.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    //formulario.reset();
+                    document.getElementById("formulario").style.display = 'none';
+                    document.getElementById("showStats").style.display = 'block';
+                    altaPlayer(document.getElementById("name").value,document.getElementById("mail").value,document.getElementById("edad").value,puntaje);
+                });
+
         } else {
             v.innerHTML= `
                 <h4>Lo siento, perdiste la palabra era: ${palabra}</h4>
@@ -180,7 +191,7 @@ const vidas=()=>{
                 <a class="btn btn-primary" href="index.html">Retry</a>
                 `;
         }
-        
+
         document.getElementById("abc").remove();
 
 

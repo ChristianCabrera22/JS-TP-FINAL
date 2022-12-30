@@ -11702,3 +11702,6 @@ body {
  height: 263px;
  width: 101px;
 }
+.hide {
+  display: none;
+}

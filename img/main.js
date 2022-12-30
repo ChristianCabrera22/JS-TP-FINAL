@@ -47,12 +47,13 @@ if(localStorage.getItem("carrito")){
 
 //Modificamos el DOM mostrando los productos: 
 
-const contenedorProductos = document.getElementById("contenedorProductos");
+
 
 //Creamos una función para mostrar los productos: 
 
 const mostrarProductos = () => {
     productos.forEach( producto => {
+        const contenedorProductos = document.getElementById("contenedorProductos");
         const card = document.createElement("div");
         card.classList.add("col-xl-3", "col-md-6", "col-xs-12");
         card.innerHTML = `
