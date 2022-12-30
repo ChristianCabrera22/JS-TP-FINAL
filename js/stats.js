@@ -52,7 +52,7 @@ arrayStats.push(playerAle);
 
 
 
- if(localStorage.getItem("arrayStats")!=0){
+ if(localStorage.getItem("arrayStats")){
     arrayStats = JSON.parse(localStorage.getItem("arrayStats"));
 }
 
@@ -97,8 +97,7 @@ function listaPlayer() {
 
     contenedorLista.innerHTML = "";
     if(arrayStats!=0){
-    arrayStats.forEach( player => {
-        
+        arrayStats.forEach( player => {
         const card = document.createElement("li");
         card.classList.add("list-group-item","d-flex","justify-content-between","align-items-start");
         card.setAttribute("id",`borrar${player.name}`)
