@@ -23,8 +23,8 @@ let letrasIngresadas =""; //va concatenando las letras ingresadas
 
 
 pRamdom = ()=> {
-    const arrayPalabras=["A"];
-    //const arrayPalabras=["CASA","AUTO","BICICLETA","SEMAFORO","SILLON","LIVIANO","PESADO","ORDEN"];
+    //const arrayPalabras=["A"];
+    const arrayPalabras=["CASA","AUTO","BICICLETA","SEMAFORO","SILLON","LIVIANO","PESADO","ORDEN"];
     let palabra = arrayPalabras[Math.floor(Math.random() * arrayPalabras.length)];
     return palabra
 }
