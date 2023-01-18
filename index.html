@@ -38,7 +38,8 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">Hola!</h1>
+                        <p class="font my-0 text-uppercase text-white ">Bienvenido al juego del</p>
+                        <h1 class="mx-auto my-0 text-uppercase">Ahorcado!</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Sitio de juego creado para el curso Javascript de CODERHOUSE</h2>
                         <a class="btn btn-primary" href="#juego">INICIAR</a>
                     </div>
@@ -50,7 +51,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h2 class="text-white mb-1">Juego del Ahorcado</h2>
+                        <h2 class="text-white mb-1">Comencemos..</h2>
                         <p class="text-white-50">
                             Adivina la palabra, pero no te equivoques mucho.. su destino esta en tus dedos!
                             <div class="container">
@@ -99,12 +100,16 @@
 <!--stats-->
 <section class="projects-section bg-light " id="stats">
     <h1 class="text-center">JUGADORES</h1> 
-        <div class="container px-4 px-lg-5"><a class="text-center" onclick="listaPlayer();">reload</a>
-            <!-- Project One Row-->
+        <div class="container px-4 px-lg-5">
+            <div class="row justify-content-between">
+                <div class="col-2"><a class="text-start" onclick="listaPlayer();">Recargar</a></div>
+                <div class="col-6 text-start"><a class="text-center" onclick="ordenar();">⇅</a></div>
+                <div class="col-4 text-end"><a href="#">Iniciar Sesion</a></div>
+            </div>
             <div class="row gx-0 mb-5 mb-lg-0 justify-content-center text-center">
-             <ol class="list-group list-group-numbered lista" id="statsList">
+             <ul class="list-group list-group-bullet lista" id="statsList">
                 <!-- Aqui va listado con JS-->
-              </ol>
+              </ul>
             </div>
         </div>
     </section>

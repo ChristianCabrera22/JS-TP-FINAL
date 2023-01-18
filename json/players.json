@@ -1,0 +1,13 @@
+[
+    {"name":"Chris", "mail":"ccabrera@info.com.ar", "age":32,"score":1028},
+    {"name":"Alex22", "mail":"jlopez.22@sodimac.com", "age":18,"score":840},
+    {"name":"JotaFX", "mail":"jota.elcrack@gmail.com", "age":17,"score":780},
+    {"name":"Lauras", "mail":"lau.la_linda@hotmail.com", "age":25,"score":220},
+    {"name":"Manolo", "mail":"manu22@hotmail.com", "age":22,"score":420},
+    {"name":"Tocaimasa", "mail":"elCapodeCOder@coderhouse.com.ar", "age":32,"score":980},
+    {"name":"Abigail", "mail":"abieche@gmail.com", "age":19,"score":221},
+    {"name":"Mateo", "mail":"teto@gmail.com", "age":25,"score":820},
+    {"name":"Maria", "mail":"laMari@gmail.com", "age":45,"score":142},
+    {"name":"Eduardo", "mail":"edudu@gmail.com", "age":21,"score":789},
+    {"name":"Ever", "mail":"everto@gmail.com", "age":87,"score":500}
+]

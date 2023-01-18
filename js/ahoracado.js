@@ -1,6 +1,6 @@
 //creamos el abcdario con javascript
 let abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-let puntaje=0;
+let puntaje=0; //puntaje inicial
 let victorias=0; //cuenta las victorias seguidas
 const agregarABC = () => {
 for (let i=0; i<abc.length; i++) {
@@ -15,7 +15,7 @@ for (let i=0; i<abc.length; i++) {
 }
 agregarABC(); //agrega el abcdario por primera vez
 
-document.getElementById("formulario").style.display = 'none';
+document.getElementById("formulario").style.display = 'none'; //oculta formulario
 
 
 let vida=6; //Cantidad de intentos
@@ -44,14 +44,11 @@ for (let i = 0; i< palabra.length; i++) {
     auxFaltantes=auxFaltantes+"_";
 }
 function pushLetra(letra) {
-
     for (let i = 0; i< letrasIngresadas.length; i++) {
-        let caracter = letrasIngresadas.charAt(i);
-        if(caracter == letra) return;
+        if(letrasIngresadas.charAt(i) == letra) return;
     }
-
     acerto=CompararLetra(letra); //ver si acerto o no
-    agregarLetraPT(letra); // agregar letra acertada
+    agregarLetraPT(letra); // agregar letra 
     letrasIngresadas=letrasIngresadas+letra+" - ";
     if (acerto==0) {
         vida--;
@@ -59,20 +56,17 @@ function pushLetra(letra) {
         palabraTemporal=palabraTemporal+letra;
         conGanador=conGanador+acerto;
         palabra2=palabrasAcertadas;
-        if (conGanador==palabra.length){
+        if (conGanador==palabra.length) { //si pasa por aca es porque gano
             win=true; //Gano
-            
-            //muestra palabra acertada:
-            acertadas();
-            //cambia Vidas: por GANASTE!
-            ganaste();
-            //Borra abcdario
+            acertadas(); //muestra palabra acertada:
+            ganaste(); //cambia Vidas: por GANASTE!
+            //Borra abcdario:
             document.getElementById("abc").remove();
             const gg = document.createElement('div');
             gg.setAttribute("id", "abc");
             gg.setAttribute("class", "abcdario");
             document.querySelector(".reset").appendChild(gg);
-            //Muestra puntaje
+            //Muestra puntaje:
             puntaje=puntaje+(vida*80);
             victorias++;
             const bbb = document.createElement("p");
@@ -80,7 +74,7 @@ function pushLetra(letra) {
             bbb.setAttribute("class", "mt=2");
             bbb.innerHTML = `
             <br><h3>Puntaje: ${puntaje}</h3>
-            <boton class="btn btn-danger" id="retry">Otra vez!</boton>
+            <boton class="btn btn-primary" id="retry">Otra vez!</boton>
             <br>`;
             document.body.appendChild(bbb);
             document.querySelector(".letras").appendChild(bbb);
@@ -109,12 +103,9 @@ function pushLetra(letra) {
             return
         }
     }
-
     men();
     acertadas();
     vidas();
-
-
     auxFaltantes=palabrasAcertadas;
     faltantes=""; //resetea faltantes
     palabrasAcertadas="";
@@ -124,6 +115,8 @@ function pushLetra(letra) {
 
 
 //funciones:
+
+//-- homresito muerto:
 const men=(muerto)=>{
     document.getElementById("hombresito").remove();
     const c = document.createElement("img");
@@ -137,6 +130,7 @@ const men=(muerto)=>{
     document.querySelector(".monigote").appendChild(c);
 }
 
+//-- mensaje ganaste
 const ganaste=()=>{
     document.getElementById("vidas").remove();
     document.getElementById("letrasIngresadas").remove();
@@ -147,6 +141,7 @@ const ganaste=()=>{
     document.querySelector(".vidas").appendChild(v);
 }
 
+//-- muestra las letras acertadas
 const acertadas=()=>{
     document.getElementById("acertadas").remove();
     const p = document.createElement("p");
@@ -161,16 +156,13 @@ const vidas=()=>{
     document.getElementById("vidas").remove();
     const v = document.createElement("p");
     v.setAttribute("id", "vidas");
-    if (vida<=2) {
-        v.setAttribute("class", "text-danger");
-    }
     if (vida==0){
         men(true);
         document.getElementById("acertadas").remove();
         document.getElementById("palabras").remove();
-        document.getElementById("formulario").style.display = 'block';
+        //document.getElementById("formulario").style.display = 'block';
         //v.innerText = "Lo siento, perdiste La palabra era: "+palabra;
-        if (puntaje>0 && victorias>0){
+        if (puntaje>0 && victorias>0) {
             v.innerHTML= `
                 <h4>Lo siento, perdiste la palabra era: ${palabra}</h4>
                 <p class="text-white">Puntaje total: ${puntaje}</p>
@@ -182,10 +174,7 @@ const vidas=()=>{
                     //formulario.reset();
                     document.getElementById("formulario").style.display = 'none';
                     document.getElementById("showStats").style.display = 'block';
-                    altaPlayer(document.getElementById("name").value,document.getElementById("mail").value,document.getElementById("edad").value,puntaje);
-                
-                });
-
+                    altaPlayer(document.getElementById("name").value,document.getElementById("mail").value,document.getElementById("edad").value,puntaje);                });
         } else {
             v.innerHTML= `
                 <h4>Lo siento, perdiste la palabra era: ${palabra}</h4>
@@ -193,7 +182,6 @@ const vidas=()=>{
                 <a class="btn btn-primary" href="index.html">Retry</a>
                 `;
         }
-
         document.getElementById("abc").remove();
     } else {
         v.innerText = "Vidas: "+(vida);
@@ -203,13 +191,17 @@ const vidas=()=>{
 }
 
 function agregarLetraPT(letra) {
-    for (let i = 0; i< palabra.length; i++) { //0 al 6
+    for (let i = 0; i< palabra.length; i++) {
         if (palabra.charAt(i)==letra){
             faltantes=faltantes+letra;
         } else {
             faltantes=faltantes+"_";
         }
     }
+    letrasAcertadas();
+}
+
+function letrasAcertadas(letra){
     for (let i = 0; i< palabra.length; i++) {
         if(auxFaltantes.charAt(i)=="_" && faltantes.charAt(i)=="_") {
             palabrasAcertadas=palabrasAcertadas+"_";
@@ -220,7 +212,6 @@ function agregarLetraPT(letra) {
         }
     }
 }
-
 function CompararLetra(letra){
     let b=0;
     for (let i = 0; i< palabra.length; i++) {
