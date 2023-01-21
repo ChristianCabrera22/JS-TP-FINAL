@@ -11711,3 +11711,16 @@ body {
 .hide {
   display: none;
 }
+.w-10 {
+  width: 50px;
+}
+.w-20  {
+  width: 110px;
+}
+.w-5 {
+  width: 30px;
+}
+.left {
+  margin-left: 40px;
+}
+

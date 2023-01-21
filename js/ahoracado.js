@@ -160,8 +160,6 @@ const vidas=()=>{
         men(true);
         document.getElementById("acertadas").remove();
         document.getElementById("palabras").remove();
-        //document.getElementById("formulario").style.display = 'block';
-        //v.innerText = "Lo siento, perdiste La palabra era: "+palabra;
         if (puntaje>0 && victorias>0) {
             v.innerHTML= `
                 <h4>Lo siento, perdiste la palabra era: ${palabra}</h4>
@@ -171,10 +169,9 @@ const vidas=()=>{
                 const formulario = document.getElementById("formulario");
                 formulario.addEventListener("submit", (e) => {
                     e.preventDefault();
-                    //formulario.reset();
                     document.getElementById("formulario").style.display = 'none';
                     document.getElementById("showStats").style.display = 'block';
-                    altaPlayer(document.getElementById("name").value,document.getElementById("mail").value,document.getElementById("edad").value,puntaje);                });
+                    altaPlayer(document.getElementById("name").value,document.getElementById("mail").value,document.getElementById("edad").value,puntaje);});
         } else {
             v.innerHTML= `
                 <h4>Lo siento, perdiste la palabra era: ${palabra}</h4>
