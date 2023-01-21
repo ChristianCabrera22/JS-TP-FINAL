@@ -107,8 +107,8 @@ function modPlayer(jugador){
                 <div class="fw-bold"><a href="mailto:${player.mail}">${formulario['name'].value}</a><small class="mx-4">Edad: ${formulario['age'].value}</small></div>
                 Puntaje: ${formulario['score'].value}
                 </div>
-                <button class="badge bg-primary rounded-pill mt-2" onclick="modPlayer('${formulario['name'].value}'">MODIFICAR</button>
-                <button class="badge bg-primary rounded-pill mt-2" onclick="bajaPlayer('${formulario['name'].value}'">BORRAR</button>
+                <button class="badge bg-primary rounded-pill mt-2" onclick="modPlayer('${formulario['name'].value}')">MODIFICAR</button>
+                <button class="badge bg-primary rounded-pill mt-2" onclick="bajaPlayer('${formulario['name'].value}')">BORRAR</button>
             `;
         });
 
@@ -248,10 +248,10 @@ function top3() {
         let arrayTop3 = [...arrayStats];
         arrayTop3.sort((a,b) => b.score - a.score);
         contenedorTop3Lista.innerHTML = "";
-
         for (let i=0;i<3; i++) {
+            if(i+1>arrayTop3.length) return;
+            //alert(arrayTop3.length);
             let player=arrayTop3[i];
-
             const card = document.createElement("div");
             card.classList.add("col-md-4", "mb-3", "mb-md-0");
             card.innerHTML = `
@@ -271,7 +271,7 @@ function top3() {
             card.innerHTML = `
                 <div class="card py-4 h-100">
                 <div class="card-body text-center">
-                    <h3 class="text-uppercase m-0">SIN TOP</h3>
+                    <h3 class="text-uppercase m-0">SIN TOP 3</h3>
                     <h4 class="text-uppercase m-0">Sin jugadores</h4>
                     <hr class="my-4 mx-auto" />
                     <div class="small text-black-50"></div>
@@ -293,6 +293,4 @@ function toast(){
         }
     }).showToast();
 }
-listaPlayer();
-top3();
 sesion();
